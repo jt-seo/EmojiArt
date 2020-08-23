@@ -42,11 +42,7 @@ struct EmojiArtDocumentView: View {
                         // location is in global coordinate system. (coordinate system of the entire device, top-left 0,0)
                         // geometry.frame(.global).origin has the position of the view containing this point.
                         // So we have to adjust the coordinate of point to have 0, 0 if it has the same value with the frame.origin
-                        print("OnDrop: providers[\(providers.count)]")
-                        print("before location: \(location)")
                         var location = geometry.convert(location, from: .global)
-                        print("location: \(location)")
-                        print("geometry: \(geometry.size)")
                         location = CGPoint(x: location.x - geometry.size.width / 2, y: location.y - geometry.size.height / 2)   // TODO: - bogus. why we should convert coordinate to center?
                         return self.drop(providers: providers, location: location)
                     }
@@ -74,6 +70,8 @@ struct EmojiArtDocumentView: View {
             self.document.addEmoji(emoji: string, at: location, size: self.defaultEmojiSize) }) {
             return true
         }
+        
+        print("Can't find matching provider. count: \(providers.count)")
 //        print("type not matched")
 //        for item in providers {
 //            print(item)

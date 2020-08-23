@@ -14,9 +14,10 @@ struct EmojiArt {
     var backgroundImageURL: URL?
     
     mutating func addEmoji(text: String, x: Int, y: Int, size: Int) {
-        emojis.append(Emoji(text: text, x: x, y: y, size: size, id: emojiUniqueId))
+        let emoji = Emoji(text: text, x: x, y: y, size: size, id: emojiUniqueId)
+        print("addEmoji: \(emoji)")
+        emojis.append(emoji)
         emojiUniqueId += 1
-        print("Add emoji: \(emojiUniqueId)")
     }
 }
 
@@ -33,7 +34,5 @@ struct Emoji {
         self.y = y
         self.size = size
         self.id = id
-        
-        print(self)
     }
 }

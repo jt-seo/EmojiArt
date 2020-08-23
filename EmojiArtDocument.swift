@@ -35,18 +35,13 @@ class EmojiArtDocument: ObservableObject {
     }
     
     func addEmoji(emoji: String, at location: CGPoint, size: CGFloat) {
-        print("addEmoji")
         emojiArt.addEmoji(text: emoji, x: Int(location.x), y: Int(location.y), size: Int(size))
     }
 }
 
 extension Emoji {
     func position(in rect: CGSize) -> CGPoint {
-        print(self)
-        var pos = CGPoint(x: CGFloat(self.x) + rect.width / 2, y: CGFloat(self.y) + rect.height / 2)
-        print(pos)
-        print("rect: \(rect)")
-        return pos
+        CGPoint(x: CGFloat(self.x) + rect.width / 2, y: CGFloat(self.y) + rect.height / 2)
     }
     
     var fontSize: CGFloat {
